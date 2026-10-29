@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoleStyle | Modern Footwear Store</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#f97316',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f97316;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-orange-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 text-white text-xs font-semibold py-2 px-4 text-center tracking-wide flex justify-between items-center px-6 sm:px-12">
+        <span class="hidden sm:inline"><i class="fa-solid fa-truck-fast mr-2"></i> Free Express Shipping across India</span>
+        <span class="mx-auto sm:mx-0"><i class="fa-brands fa-whatsapp text-yellow-300 mr-1"></i> Quick WhatsApp Ordering Enabled</span>
+        <span class="hidden md:inline"><i class="fa-solid fa-hand-holding-dollar mr-2"></i> Cash on Delivery Available</span>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                    <a href="#" class="flex items-center gap-2 group">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform duration-300">
+                            <i class="fa-solid fa-shoe-prints text-lg transform -rotate-45"></i>
+                        </div>
+                        <span class="text-2xl font-extrabold tracking-tight text-white">Sole<span class="text-orange-500">Style</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-300">
+                    <a href="#hero" class="hover:text-orange-500 transition-colors py-1">Home</a>
+                    <a href="#categories" class="hover:text-orange-500 transition-colors py-1">Categories</a>
+                    <a href="#shop" class="hover:text-orange-500 transition-colors py-1">Shop All</a>
+                    <a href="#reviews" class="hover:text-orange-500 transition-colors py-1">Reviews</a>
+                </nav>
+
+                <!-- Search & Quick Contact -->
+                <div class="flex items-center gap-4">
+                    <!-- Search Bar -->
+                    <div class="relative hidden sm:block w-48 md:w-64">
+                        <input type="text" id="search-input" placeholder="Search footwear..." 
+                            class="w-full bg-slate-900/90 text-sm text-slate-200 placeholder-slate-500 rounded-full pl-10 pr-4 py-2 border border-slate-700 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 text-slate-500 text-sm"></i>
+                    </div>
+
+                    <!-- Direct WhatsApp Header CTA -->
+                    <a href="https://wa.me/919876543210?text=Hi%20SoleStyle,%20I%20have%20an%20inquiry%20about%20your%20footwear%20collection." target="_blank" 
+                       class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full font-bold text-xs flex items-center gap-2 shadow-lg transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span class="hidden sm:inline">WhatsApp Support</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-slate-900/95 px-6 py-4 space-y-3">
+            <div class="relative mb-3">
+                <input type="text" placeholder="Search footwear..." class="w-full bg-slate-800 text-sm text-slate-200 placeholder-slate-500 rounded-full pl-10 pr-4 py-2.5 border border-slate-700">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-500 text-sm"></i>
+            </div>
+            <a href="#hero" class="block text-slate-200 font-medium hover:text-orange-500 py-1">Home</a>
+            <a href="#categories" class="block text-slate-200 font-medium hover:text-orange-500 py-1">Categories</a>
+            <a href="#shop" class="block text-slate-200 font-medium hover:text-orange-500 py-1">Shop Collections</a>
+            <a href="#reviews" class="block text-slate-200 font-medium hover:text-orange-500 py-1">Testimonials</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative overflow-hidden pt-8 pb-16 lg:py-24">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-orange-600/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Text Side -->
+                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-semibold tracking-wide uppercase">
+                            <i class="fa-solid fa-fire text-amber-400"></i> New Footwear Arrivals
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+                            PREMIUM <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">FOOTWEAR</span> FOR EVERY STEP.
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 font-normal">
+                            Explore high-comfort sports runners, casual sneakers, formal shoes, and heavy-duty boots. Order directly on WhatsApp with cash on delivery option!
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#shop" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold rounded-xl shadow-xl shadow-orange-500/25 transition-all text-center flex items-center justify-center gap-2 group">
+                                View Shoes <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+
+                        <!-- Highlights -->
+                        <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <p class="text-xl sm:text-2xl font-bold text-white">100%</p>
+                                <p class="text-xs text-slate-400">Comfort Guarantee</p>
+                            </div>
+                            <div>
+                                <p class="text-xl sm:text-2xl font-bold text-white">COD</p>
+                                <p class="text-xs text-slate-400">Available All India</p>
+                            </div>
+                            <div>
+                                <p class="text-xl sm:text-2xl font-bold text-white">Direct</p>
+                                <p class="text-xs text-slate-400">WhatsApp Ordering</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Showcase Side -->
+                    <div class="lg:col-span-6 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div class="relative z-10 rounded-3xl overflow-hidden border border-slate-700/60 bg-gradient-to-b from-slate-800 to-slate-900 p-4 shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1000" 
+                                     alt="Featured Shoe" 
+                                     class="w-full h-[350px] sm:h-[420px] object-cover rounded-2xl">
+                                
+                                <div class="absolute bottom-8 left-8 glass-panel p-4 rounded-2xl border border-white/10 shadow-2xl hidden sm:flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-xl">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-medium">Easy Checkout</p>
+                                        <p class="text-sm font-bold text-white">Order in 1-Click via WhatsApp</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Badges -->
+        <section class="border-y border-slate-800/80 bg-slate-900/50 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
+                    <div class="flex flex-col md:flex-row items-center gap-3 p-2">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Free Express Shipping</h4>
+                            <p class="text-xs text-slate-400">On orders above ₹999</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-3 p-2">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Cash on Delivery</h4>
+                            <p class="text-xs text-slate-400">Pay when your order arrives</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-3 p-2">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">7 Days Easy Return</h4>
+                            <p class="text-xs text-slate-400">Simple replacement policy</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-3 p-2">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Instant WhatsApp Order</h4>
+                            <p class="text-xs text-slate-400">No complex sign-up required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section id="categories" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-orange-500 text-xs font-bold uppercase tracking-wider">Explore Styles</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-1">Shop By Category</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Sports -->
+                <div class="group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800" onclick="filterCategory('Sports')">
+                    <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&q=80&w=600" 
+                         alt="Sports Shoes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Running & Sports</h3>
+                    </div>
+                </div>
+
+                <!-- Casual -->
+                <div class="group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800" onclick="filterCategory('Casual')">
+                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&q=80&w=600" 
+                         alt="Casual Shoes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Casual Sneakers</h3>
+                    </div>
+                </div>
+
+                <!-- Boots -->
+                <div class="group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800" onclick="filterCategory('Boots')">
+                    <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=600" 
+                         alt="Boots" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Outdoor Boots</h3>
+                    </div>
+                </div>
+
+                <!-- Formal -->
+                <div class="group relative h-64 sm:h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800" onclick="filterCategory('Formal')">
+                    <img src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&q=80&w=600" 
+                         alt="Formal Shoes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Formal & Dress</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Shop Grid -->
+        <section id="shop" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-orange-500 text-xs font-bold uppercase tracking-wider">Quality Footwear</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Featured Collection</h2>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 bg-slate-900 p-1.5 rounded-2xl border border-slate-800 mb-8 max-w-xl mx-auto">
+                <button onclick="filterCategory('All')" class="filter-tab active px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-orange-600 text-white shadow-md" data-category="All">All Items</button>
+                <button onclick="filterCategory('Sports')" class="filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white" data-category="Sports">Sports</button>
+                <button onclick="filterCategory('Casual')" class="filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white" data-category="Casual">Casual</button>
+                <button onclick="filterCategory('Boots')" class="filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white" data-category="Boots">Boots</button>
+                <button onclick="filterCategory('Formal')" class="filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white" data-category="Formal">Formal</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+        <section id="reviews" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-orange-500 text-xs font-bold uppercase tracking-wider">Customer Experience</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">What Buyers Say</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="flex text-amber-400 gap-1 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        "Ordered the Urban Running Shoes via WhatsApp. Received the confirmation immediately and the shoes arrived in 3 days. Very comfortable fit!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 font-bold text-white flex items-center justify-center">
+                            AK
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Amit Kumar</p>
+                            <p class="text-xs text-slate-400">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="flex text-amber-400 gap-1 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        "Great leather quality on the Dress Oxfords. The WhatsApp order process was extremely simple without having to create an account."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 font-bold text-white flex items-center justify-center">
+                            RS
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Rahul Sharma</p>
+                            <p class="text-xs text-slate-400">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="flex text-amber-400 gap-1 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        "Trekking boots are sturdy and completely waterproof. Excellent value for money. Highly recommended store!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 font-bold text-white flex items-center justify-center">
+                            VP
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-white">Vikram Patel</p>
+                            <p class="text-xs text-slate-400">Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-4">
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-shoe-prints text-sm"></i>
+                    </div>
+                    <span class="text-xl font-extrabold text-white">Sole<span class="text-orange-500">Style</span></span>
+                </a>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Quality footwear store providing sports, casual, formal, and outdoor shoes with convenient WhatsApp checkout and Cash on Delivery support.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Customer Support</h4>
+                <p class="text-xs text-slate-400 mb-2"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2 text-sm"></i> WhatsApp Order: +91 98765 43210</p>
+                <p class="text-xs text-slate-400"><i class="fa-solid fa-truck-fast text-orange-400 mr-2 text-sm"></i> Free Delivery on orders above ₹999</p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-sm mb-4">Payment Methods</h4>
+                <p class="text-xs text-slate-400 mb-3">Cash on Delivery (COD) / UPI / Bank Transfer via WhatsApp confirmation</p>
+                <div class="flex items-center gap-3 text-emerald-400 font-bold text-xs bg-slate-900 p-3 rounded-xl border border-slate-800 w-fit">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    Direct Order Confirmation
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-slate-900 text-center text-xs text-slate-600">
+            &copy; 2026 SoleStyle Footwear Demo. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Order Form Modal -->
+    <div id="whatsapp-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onclick="closeWhatsAppModal()"></div>
+        
+        <div class="relative bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 z-10 shadow-2xl space-y-5">
+            <button onclick="closeWhatsAppModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-4">
+                <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Order via WhatsApp</h3>
+                    <p class="text-xs text-slate-400">Fill details to generate WhatsApp order message</p>
+                </div>
+            </div>
+
+            <form id="whatsapp-order-form" onsubmit="sendWhatsAppOrder(event)" class="space-y-4">
+                <input type="hidden" id="modal-product-id">
+                
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Selected Product</label>
+                    <div id="modal-product-title" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-sm font-bold text-orange-400"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">Size (UK)</label>
+                        <select id="modal-size-select" class="w-full bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-emerald-500">
+                            <!-- Injected -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">Color</label>
+                        <select id="modal-color-select" class="w-full bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-emerald-500">
+                            <!-- Injected -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">Quantity</label>
+                        <input type="number" id="modal-quantity" value="1" min="1" max="10" onchange="calculateModalTotal()"
+                               class="w-full bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">Total Price</label>
+                        <div id="modal-total-price" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-sm font-extrabold text-white">₹0</div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Your Full Name</label>
+                    <input type="text" id="modal-customer-name" required placeholder="Enter your full name" 
+                           class="w-full bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-emerald-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 mb-1">Delivery Address & Pincode</label>
+                    <textarea id="modal-customer-address" required rows="2" placeholder="House no, Street, City, Pincode" 
+                              class="w-full bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-xl p-3 focus:outline-none focus:border-emerald-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Send Order on WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onclick="closeQuickView()"></div>
+        
+        <div class="relative bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full p-6 sm:p-8 overflow-hidden z-10 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div id="quick-view-content" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- App Logic -->
+    <script>
+        // Generic Product Catalog (No Copyrighted Names, Prices in INR)
+        const products = [
+            {
+                id: 1,
+                name: "Urban Running Shoes",
+                category: "Sports",
+                price: 1899,
+                originalPrice: 2999,
+                rating: 4.8,
+                reviews: 112,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600",
+                description: "High-performance cushioned running shoes engineered for daily exercise, trail walks, and marathon training.",
+                sizes: [6, 7, 8, 9, 10],
+                colors: ["Red/Black", "All Black", "White/Grey"]
+            },
+            {
+                id: 2,
+                name: "Classic Canvas Sneakers",
+                category: "Casual",
+                price: 1299,
+                originalPrice: 1999,
+                rating: 4.6,
+                reviews: 84,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&q=80&w=600",
+                description: "Lightweight canvas daily casual shoes with flexible rubber sole for comfortable long-hour wear.",
+                sizes: [6, 7, 8, 9, 10],
+                colors: ["White", "Black", "Navy Blue"]
+            },
+            {
+                id: 3,
+                name: "Leather Oxford Dress Shoes",
+                category: "Formal",
+                price: 3499,
+                originalPrice: 4999,
+                rating: 4.9,
+                reviews: 56,
+                image: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&q=80&w=600",
+                description: "Elegant handcrafted synthetic leather oxford shoes ideal for formal meetings, weddings, and office wear.",
+                sizes: [7, 8, 9, 10],
+                colors: ["Black", "Tan Brown"]
+            },
+            {
+                id: 4,
+                name: "Trail Trekking Outdoor Boots",
+                category: "Boots",
+                price: 2999,
+                originalPrice: 3999,
+                rating: 4.7,
+                reviews: 73,
+                image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=600",
+                description: "Heavy-duty outdoor boots with anti-slip high-traction rubber outsole and padded ankle support.",
+                sizes: [7, 8, 9, 10, 11],
+                colors: ["Dark Brown", "Olive Green"]
+            },
+            {
+                id: 5,
+                name: "Air Cushion Casual Shoes",
+                category: "Casual",
+                price: 1699,
+                originalPrice: 2499,
+                rating: 4.5,
+                reviews: 95,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600",
+                description: "Stylish air-cushioned street sneakers designed for modern youth lifestyle and everyday comfort.",
+                sizes: [6, 7, 8, 9, 10],
+                colors: ["Blue/White", "Grey/Orange"]
+            },
+            {
+                id: 6,
+                name: "Sport Slip-On Walking Shoes",
+                category: "Sports",
+                price: 1499,
+                originalPrice: 2199,
+                rating: 4.6,
+                reviews: 67,
+                image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&q=80&w=600",
+                description: "Easy slip-on mesh walking shoes with breathable fabric upper for effortless daily wear.",
+                sizes: [6, 7, 8, 9, 10],
+                colors: ["Full Black", "Dark Grey"]
+            }
+        ];
+
+        let currentCategory = 'All';
+        let currentSelectedProduct = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProducts(products);
+
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+                renderProducts(filtered);
+            });
+        });
+
+        // Render Products
+        function renderProducts(items) {
+            const container = document.getElementById('product-grid');
+            container.innerHTML = '';
+
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-500">
+                        <i class="fa-solid fa-shoe-prints text-4xl mb-3 block"></i>
+                        No footwear found matching your selection.
+                    </div>
+                `;
+                return;
+            }
+
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-slate-700 transition-all duration-300 flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative bg-slate-950 h-56 overflow-hidden cursor-pointer" onclick="quickViewProduct(${product.id})">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            
+                            <span class="absolute top-3 left-3 bg-orange-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">COD Available</span>
+
+                            <!-- Quick View Button -->
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button onclick="event.stopPropagation(); quickViewProduct(${product.id})" class="px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-full hover:bg-orange-600 transition-colors shadow-lg flex items-center gap-2">
+                                    <i class="fa-regular fa-eye"></i> Quick Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div class="p-5 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-orange-400 font-semibold">${product.category}</span>
+                                <div class="flex items-center gap-1 text-amber-400">
+                                    <i class="fa-solid fa-star text-[10px]"></i>
+                                    <span class="font-bold text-slate-200">${product.rating}</span>
+                                </div>
+                            </div>
+
+                            <h3 class="text-base font-bold text-white group-hover:text-orange-400 transition-colors line-clamp-1 cursor-pointer" onclick="quickViewProduct(${product.id})">
+                                ${product.name}
+                            </h3>
+
+                            <div class="flex items-baseline gap-2 pt-1">
+                                <span class="text-xl font-extrabold text-white">₹${product.price.toLocaleString('en-IN')}</span>
+                                ${product.originalPrice ? `<span class="text-xs text-slate-500 line-through">₹${product.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Order Action -->
+                    <div class="p-5 pt-0">
+                        <button onclick="openWhatsAppModal(${product.id})" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Order on WhatsApp
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Category Filter
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                if (tab.dataset.category === category) {
+                    tab.className = "filter-tab active px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-orange-600 text-white shadow-md";
+                } else {
+                    tab.className = "filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white";
+                }
+            });
+
+            if (category === 'All') {
+                renderProducts(products);
+            } else {
+                renderProducts(products.filter(p => p.category === category));
+            }
+        }
+
+        // Open WhatsApp Checkout Modal
+        function openWhatsAppModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentSelectedProduct = product;
+            document.getElementById('modal-product-id').value = product.id;
+            document.getElementById('modal-product-title').textContent = `${product.name} - ₹${product.price.toLocaleString('en-IN')}`;
+
+            // Populate Sizes
+            const sizeSelect = document.getElementById('modal-size-select');
+            sizeSelect.innerHTML = product.sizes.map(s => `<option value="UK ${s}">UK ${s}</option>`).join('');
+
+            // Populate Colors
+            const colorSelect = document.getElementById('modal-color-select');
+            colorSelect.innerHTML = product.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+
+            document.getElementById('modal-quantity').value = 1;
+            calculateModalTotal();
+
+            const modal = document.getElementById('whatsapp-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeWhatsAppModal() {
+            const modal = document.getElementById('whatsapp-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function calculateModalTotal() {
+            if (!currentSelectedProduct) return;
+            const qty = parseInt(document.getElementById('modal-quantity').value) || 1;
+            const total = currentSelectedProduct.price * qty;
+            document.getElementById('modal-total-price').textContent = `₹${total.toLocaleString('en-IN')}`;
+        }
+
+        // Send Pre-filled WhatsApp Message
+        function sendWhatsAppOrder(e) {
+            e.preventDefault();
+            if (!currentSelectedProduct) return;
+
+            const name = document.getElementById('modal-customer-name').value.trim();
+            const address = document.getElementById('modal-customer-address').value.trim();
+            const size = document.getElementById('modal-size-select').value;
+            const color = document.getElementById('modal-color-select').value;
+            const qty = parseInt(document.getElementById('modal-quantity').value) || 1;
+            const totalPrice = currentSelectedProduct.price * qty;
+
+            const phoneNumber = "919876543210"; // Demo store seller phone number
+
+            const message = 
+`*NEW FOOTWEAR ORDER - SOLESTYLE*
+----------------------------------
+👟 *Product:* ${currentSelectedProduct.name}
+🏷️ *Category:* ${currentSelectedProduct.category}
+📏 *Size:* ${size}
+🎨 *Color:* ${color}
+🔢 *Quantity:* ${qty}
+💰 *Total Price:* ₹${totalPrice.toLocaleString('en-IN')} (COD/Online)
+
+👤 *Customer Details:*
+• *Name:* ${name}
+• *Address:* ${address}
+----------------------------------
+Please confirm my order delivery!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            closeWhatsAppModal();
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Quick View Modal
+        function quickViewProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modalContent = document.getElementById('quick-view-content');
+            modalContent.innerHTML = `
+                <div class="rounded-2xl overflow-hidden bg-slate-950 h-64 sm:h-80">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-4">
+                    <span class="text-xs font-bold text-orange-400 uppercase tracking-widest">${product.category}</span>
+                    <h3 class="text-2xl font-bold text-white">${product.name}</h3>
+                    
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl font-extrabold text-white">₹${product.price.toLocaleString('en-IN')}</span>
+                        <div class="flex items-center text-amber-400 text-xs gap-1">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="font-bold text-slate-200">${product.rating}</span>
+                            <span class="text-slate-500">(${product.reviews} reviews)</span>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">${product.description}</p>
+
+                    <div class="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                        <i class="fa-solid fa-truck-fast text-emerald-400"></i> Free Delivery & COD Available
+                    </div>
+
+                    <button onclick="closeQuickView(); openWhatsAppModal(${product.id});" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Order Directly via WhatsApp
+                    </button>
+                </div>
+            `;
+
+            const modal = document.getElementById('quick-view-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quick-view-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+    </script>
+</body>
+</html>
